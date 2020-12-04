@@ -92,7 +92,7 @@ export default class IngredientsList extends Vue {}
 }
 
 .headline {
-  white-space: nowrap;
+  /* white-space: nowrap; */
 }
 
 #IngredientsList {
