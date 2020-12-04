@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import { db } from '@/firebase';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 import off from '@/mixins/openFoodFacts.mixin';
 import { get } from 'lodash';
 

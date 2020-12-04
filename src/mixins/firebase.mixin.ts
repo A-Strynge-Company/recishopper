@@ -1,4 +1,3 @@
-// import firebase from 'firebase';
 import { auth } from '@/firebase';
 import store from '@/store/index';
 
