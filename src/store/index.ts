@@ -9,9 +9,8 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    // firebaseUser: null,
+    unsubscribe: () => null,
     userId: '',
-    // ingredientsIds: [],
     ingredients: new Array<any>(),
     recipes: [],
 
@@ -28,6 +27,7 @@ const store = new Vuex.Store({
     clearUser: (state) => {
       state.user = { ingredients: [''] };
       state.userId = '';
+      state.unsubscribe();
     },
     setUserId: (state, userId) => {
       state.userId = userId;
@@ -38,7 +38,9 @@ const store = new Vuex.Store({
     setRecipes: (state, recipes) => {
       state.recipes = recipes;
     },
-
+    setUnsubscribe: (state, unsubscribe) => {
+      state.unsubscribe = unsubscribe;
+    },
     setUser: (state, user) => {
       state.user = user;
     },
@@ -52,7 +54,7 @@ const store = new Vuex.Store({
       }
       const userRef = db.collection('users').doc(user.uid);
 
-      userRef.onSnapshot(async (doc) => {
+      const unsubcribe = userRef.onSnapshot(async (doc) => {
         commit('setUserId', doc.id);
         commit('setUser', doc.data());
 
@@ -65,6 +67,7 @@ const store = new Vuex.Store({
           .concat(state.ingredients);
         commit('setIngredients', ingredients);
       });
+      commit('setUnsubscribe', unsubcribe);
     },
     onIngredientAdded: async ({ state }, ingredientId) => {
       console.log('adding ingredient');

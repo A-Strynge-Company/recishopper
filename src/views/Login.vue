@@ -11,9 +11,6 @@ import 'firebaseui/dist/firebaseui.css';
 @Component({
   components: {},
   mounted() {
-    // firebase
-    //   .auth()
-    //   .onAuthStateChanged((user) => this.$store.commit('updateUser', user));
     let ui = firebaseui.auth.AuthUI.getInstance();
     if (!ui) {
       ui = new firebaseui.auth.AuthUI(firebase.auth());
