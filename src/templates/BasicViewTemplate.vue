@@ -49,7 +49,7 @@
       </template>
     </v-app-bar>
     <v-sheet id="scrolling-techniques-3" class="overflow-y-auto">
-      <v-container>
+      <v-container id="slot-container">
         <!-- SLOT -->
         <slot />
       </v-container>
@@ -72,3 +72,9 @@ import { Component, Vue } from 'vue-property-decorator';
 })
 export default class BasicViewTemplate extends Vue {}
 </script>
+
+<style scoped>
+#slot-container {
+  margin-top: 250px;
+}
+</style>

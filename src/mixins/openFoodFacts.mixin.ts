@@ -1,6 +1,9 @@
 import axios from 'axios';
 
 export default {
+  created() {
+    console.log('useless');
+  },
   methods: {
     getOneProduct(productId: string): Promise<unknown> {
       return axios.get(`https://world.openfoodfacts.org/api/v0/product/${productId}.json`);

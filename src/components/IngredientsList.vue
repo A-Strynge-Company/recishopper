@@ -96,6 +96,6 @@ export default class IngredientsList extends Vue {}
 }
 
 #IngredientsList {
-  margin-top: 250px;
+  /* margin-top: 250px; */
 }
 </style>
