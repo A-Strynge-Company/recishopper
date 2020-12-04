@@ -25,15 +25,13 @@ const store = new Vuex.Store({
 
   },
   mutations: {
-    // setFirebaseUser: (state, fUser) => {
-    //   state.firebaseUser = fUser;
-    // },
+    clearUser: (state) => {
+      state.user = { ingredients: [''] };
+      state.userId = '';
+    },
     setUserId: (state, userId) => {
       state.userId = userId;
     },
-    // setIngredientsIds: (state, ingredientsIds) => {
-    //   state.ingredientsIds = ingredientsIds;
-    // },
     setIngredients: (state, ingredients) => {
       state.ingredients = ingredients;
     },
@@ -48,12 +46,13 @@ const store = new Vuex.Store({
   },
   actions: {
     onUserConnectedChange: async ({ commit, state }, user) => {
-      console.log('action: onUserConnectedChange');
-
+      if (user == null) {
+        commit('clearUser');
+        return;
+      }
       const userRef = db.collection('users').doc(user.uid);
 
       userRef.onSnapshot(async (doc) => {
-        console.log('snapshot');
         commit('setUserId', doc.id);
         commit('setUser', doc.data());
 

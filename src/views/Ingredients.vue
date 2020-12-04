@@ -33,7 +33,6 @@ import { mapState } from 'vuex';
   },
   methods: {
     onMenuButtonClicked(event: string) {
-      console.log('onMenuButtonClicked -> onMenuButtonClicked', event);
       switch (event) {
         case 'add':
           this.$data.isDialogOpen = true;
@@ -46,7 +45,6 @@ import { mapState } from 'vuex';
       this.$data.isDialogOpen = false;
       const isValidProduct = event.length === 13;
       if (isValidProduct) {
-        console.log('🚀 ~ file50 ~ onDialogExited ~ event', event);
         this.$store.dispatch('onIngredientAdded', event);
       }
     },
